@@ -9,8 +9,4 @@ class DeleteCommandTest {
     @Test
     void execute() {
     }
-
-    @Test
-    void testExecute() {
-    }
 }
