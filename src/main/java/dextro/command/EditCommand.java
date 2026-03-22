@@ -4,7 +4,7 @@ import dextro.exception.CommandException;
 import dextro.model.Student;
 import dextro.model.Grade;
 import dextro.model.Module;
-import dextro.model.record.StudentDatabase;;
+import dextro.model.record.StudentDatabase;
 
 public class EditCommand implements Command {
     private final int index;
