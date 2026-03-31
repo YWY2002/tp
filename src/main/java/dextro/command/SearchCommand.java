@@ -52,8 +52,8 @@ public class SearchCommand implements Command {
                     }
                 }
             } else if (keyword != null) {
-                // General keyword search (searching by name)
-                if (student.getName().toLowerCase().contains(keyword.toLowerCase())) {
+                // General keyword search across ALL fields
+                if (matchesKeyword(student, keyword)) {
                     sb.append(originalIndex).append(". ").append(student.toString()).append("\n");
                     found = true;
                 }
@@ -65,6 +65,27 @@ public class SearchCommand implements Command {
         }
 
         return new CommandResult(sb.toString().trim(), false);
+    }
+
+    /**
+     * Checks if the keyword exists in any of the student's fields or their modules.
+     */
+    private boolean matchesKeyword(Student student, String keyword) {
+        String kw = keyword.toLowerCase();
+
+        if (student.getName().toLowerCase().contains(kw)) return true;
+        if (student.getPhone().toLowerCase().contains(kw)) return true;
+        if (student.getEmail().toLowerCase().contains(kw)) return true;
+        if (student.getAddress().toLowerCase().contains(kw)) return true;
+        if (student.getCourse().toLowerCase().contains(kw)) return true;
+
+        // Also check inside their modules for the module code or grade
+        for (Module m : student.getModules()) {
+            if (m.getCode().toLowerCase().contains(kw)) return true;
+            if (m.getGrade().toString().toLowerCase().contains(kw)) return true;
+        }
+
+        return false;
     }
 
     @Override
