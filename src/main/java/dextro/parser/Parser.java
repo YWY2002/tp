@@ -50,7 +50,9 @@ public class Parser {
     }
 
     private String validatePhone(String phone) throws ParseException {
-        if (phone == null) return null;
+        if (phone == null) {
+            return null;
+        }
 
         if (!phone.matches("\\d{8}")) {
             throw new ParseException("Phone number must be 8 numerical digits");
@@ -65,7 +67,9 @@ public class Parser {
     }
 
     private String validateEmail(String email) throws ParseException {
-        if (email == null) return null;
+        if (email == null) {
+            return null;
+        }
 
         if (!email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)+$")) {
             throw new ParseException("Invalid email format");
@@ -75,7 +79,9 @@ public class Parser {
     }
 
     private String validateAddress(String address) throws ParseException {
-        if (address == null) return null;
+        if (address == null) {
+            return null;
+        }
 
         if (address.length() > 200) {
             throw new ParseException("Address too long, must be less than 200 chars");
