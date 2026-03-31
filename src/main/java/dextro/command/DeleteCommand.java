@@ -22,7 +22,8 @@ public class DeleteCommand implements Command {
 
             deletedIndex = index - 1;
             deletedStudent = db.removeStudent(deletedIndex);
-            return new CommandResult("Successfully deleted student:\n" + deletedStudent.toString());
+            return new CommandResult("Successfully deleted student:"
+                    + System.lineSeparator() + deletedStudent.toString());
 
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException("The student at index " + index + " does not exist.");
