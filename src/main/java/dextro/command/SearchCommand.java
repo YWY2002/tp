@@ -57,7 +57,8 @@ public class SearchCommand implements Command {
 
     @Override
     public CommandResult execute(StudentDatabase db) throws CommandException {
-        return null;
+        // Route this to your main logic, passing null for storage since Search doesn't use it
+        return this.execute(db, null);
     }
 
     @Override
